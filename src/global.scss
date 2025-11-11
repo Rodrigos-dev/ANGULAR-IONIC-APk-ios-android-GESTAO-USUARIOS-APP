@@ -1,0 +1,213 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+ion-toast.custom-toast {
+  --background: #f4f4fa;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --color: var(--cor-verde-medio);
+}
+
+ion-toast.custom-toast::part(message) {
+  font-style: italic;
+}
+
+ion-toast.custom-toast::part(button) {
+  border-left: 1px solid var(--cor-cinza-claro);
+  color: var(--cor-verde-medio);
+  font-size: 15px;
+}
+
+.custom-alert {
+  border-radius: 20px;
+
+  .alert-button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .alert-button-1,
+  .alert-button-2,
+  .alert-button-1-full {
+    margin: 10px 0;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  .alert-button-1-full {
+    width: 100%;
+    background-color: var(--cor-verde-medio);
+    color: var(--cor-branco);
+    display: grid;
+  }
+
+  .alert-button-1 {
+    width: 48%;
+    background-color: var(--cor-verde-medio);
+    color: var(--cor-branco);
+    display: grid;
+  }
+
+  .alert-button-2 {
+    width: 48%;
+    background-color: var(--cor-branco);
+    color: var(--cor-verde-medio);
+    display: grid;
+    border: 1px solid var(--cor-verde-medio);
+  }
+
+  .alert-head {
+    text-align: center;
+    width: 100%;
+
+    h2 {
+      color: var(--cor-verde-medio);
+      font-weight: 700;
+    }
+  }
+
+  .alert-wrapper {
+    max-width: 400px !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* ====== Estilos personalizados para o ion-alert do ion-select ====== */
+.select-alert {
+  /* Cor do texto das opções */
+  .alert-radio-label.sc-ion-alert-md,
+  .alert-radio-label.sc-ion-alert-ios {
+    color: var(--cor-verde-medio) !important;
+  }
+
+  // bodinha do checkd
+  .alert-radio-button[aria-checked="true"] .alert-radio-icon {
+    border-color: var(--cor-verde-medio) !important;
+  }
+
+  //cor quando esta selecionado (o checked) - preenchimendo da bolinha
+  .alert-radio-button[aria-checked="true"] .alert-radio-inner {
+    background-color: var(--cor-verde-medio) !important;
+  }
+
+  /* Botões gerais (confirm e cancel) */
+  .alert-button {
+    color: var(--cor-verde-medio) !important;
+  }
+
+  /* Botão Cancelar (fica vermelho) */
+  .alert-button-role-cancel {
+    color: var(--ion-color-danger, #e53935) !important;
+  }
+}
+
+//para o popver do ion select
+ion-select-popover {
+  ion-list {
+    --background: var(--ion-background-color, #fff);
+  }
+
+  /* Cor do texto das opções */
+  ion-radio,
+  ion-item {
+    color: var(--cor-verde-medio) !important;
+  }
+
+  /* Cor da borda e preenchimento do check (radio) */
+  ion-radio {
+    --color: var(--cor-verde-medio) !important;
+    --color-checked: var(--cor-verde-medio) !important;
+    --border-color: var(--cor-verde-medio) !important;
+  }
+
+  /* Quando selecionado */
+  ion-radio[aria-checked="true"] {
+    --color: var(--cor-verde-medio) !important;
+    --color-checked: var(--cor-verde-medio) !important;
+  }
+
+  ion-checkbox {
+    --checkmark-color: var(--cor-branco) !important;
+    --background-checked: var(--cor-verde-medio) !important;
+    --border-color: var(--cor-verde-medio) !important;
+    --border-color-checked: var(--cor-verde-medio) !important;
+  }
+
+  /* Hover / ativo */
+  ion-item:hover {
+    background-color: rgba(0, 128, 0, 0.08); /* leve tom verde */
+  }
+}
+// fim dos estilos globais do ion-select
+
+/*Parte para a safe area*/
+/* Passo A: Aplique diretamente no Footer/Tabs */
+ion-footer {
+  /* Garante que o padding seja aplicado na tag ion-footer */
+  padding-bottom: calc(var(--ion-safe-area-bottom) + 3px) !important;
+}
+
+ion-tabs {
+  padding-bottom: calc(var(--ion-safe-area-bottom) + 3px) !important;
+}
+
+.footer {
+  padding-bottom: calc(var(--ion-safe-area-bottom) + 3px) !important;
+}
+
+//div que fica na safe area bottom para mudar cor tamanho etc
+.app-global-fixed-bottom {
+  /* 🚨 FORÇA O POSICIONAMENTO E VISIBILIDADE */
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important; /* Valor máximo para sobrepor TUDO */
+
+  /* 🚨 FORÇA DIMENSÕES E COR PARA SER VISÍVEL */
+  background: var(--cor-verde-medio);
+  color: black !important;
+  height: var(--ion-safe-area-bottom) !important;
+
+  /* Garante que o texto esteja centralizado */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

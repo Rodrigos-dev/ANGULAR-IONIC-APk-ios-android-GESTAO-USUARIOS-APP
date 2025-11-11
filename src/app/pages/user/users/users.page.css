@@ -1,0 +1,13 @@
+ion-content {
+  --padding-bottom: 120px;
+}
+ion-content ion-card {
+  margin: 10px;
+  border-radius: 12px;
+}
+ion-content ion-card .actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}/*# sourceMappingURL=users.page.css.map */

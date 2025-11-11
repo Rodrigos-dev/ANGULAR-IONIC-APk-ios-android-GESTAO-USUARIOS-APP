@@ -1,0 +1,7 @@
+{
+  "name": "userTasks",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

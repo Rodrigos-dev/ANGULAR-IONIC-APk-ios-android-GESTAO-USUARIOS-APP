@@ -1,0 +1,198 @@
+<ion-menu
+  content-id="main-content"
+  side="start"
+  class="sidebar"
+  (ionDidClose)="closeMenu()"
+>
+  <ion-content>
+    <div class="menu-logo">
+      <img src="assets/images/logo.png" alt="Logo" />
+    </div>
+
+    <ion-list lines="full" class="sidenav-links">
+      <!-- PARTE MOBILE MENUS DO MENU SANDUICH -->
+      @for (link of links; track link.label) { @if (!link.children) {
+      <ion-menu-toggle auto-hide="false">
+        <ion-item
+          (click)="navigate(link.path!)"
+          routerLinkActive="active-link"
+          class="menu-item-link"
+        >
+          <ion-label>{{ link.label }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      } @if (link.children) {
+      <div class="menu-group">
+        <ion-item
+          (click)="toggleExpandedMenu(link.menuId!)"
+          (keydown.enter)="toggleExpandedMenu(link.menuId!)"
+          class="dadMenu"
+          [class.active-submenu]="expandedMenu === link.menuId"
+          detail="false"
+          tabindex="0"
+        >
+          <ion-label class="submenu-label">{{ link.label }}</ion-label>
+          <ion-icon
+            slot="end"
+            [name]="
+              expandedMenu === link.menuId
+                ? 'chevron-up-outline'
+                : 'chevron-down-outline'
+            "
+          >
+          </ion-icon>
+        </ion-item>
+
+        @if (expandedMenu === link.menuId) {
+        <div class="submenu">
+          @for (child of link.children; track child.label) {
+          <ion-menu-toggle auto-hide="false">
+            <ion-item
+              (click)="navigate(child.path!)"
+              routerLinkActive="active-child"
+              class="submenu-item"
+            >
+              <ion-label>{{ child.label }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          }
+        </div>
+        }
+      </div>
+      } }
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header class="navbar">
+  <ion-toolbar class="header-toolbar">
+    @if (isMobile) {
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end" class="actions">
+      <div class="avatar notification-avatar">
+        <ion-icon name="notifications"></ion-icon>
+
+        @if(notificationCount > 0){
+        <ion-badge color="danger" class="notification-badge">
+          {{ notificationCount }}
+        </ion-badge>
+        }
+      </div>
+
+      <div class="avatar" (click)="openMenu($event)">
+        @if (userImageUrl && userImageUrl.length > 0) {
+        <img
+          [src]="userImageUrl"
+          alt="Avatar do Usuário"
+          class="avatar-image"
+        />
+        } @else {
+        <ion-icon name="person"></ion-icon>
+        }
+      </div>
+    </ion-buttons>
+
+    }@else {
+    <nav class="header-nav">
+      <div class="nav-content-left">
+        <img src="assets/images/logo.png" alt="Logo" class="logo" />
+
+        <div class="menu-scroll-wrapper">
+          @if (showScrollLeft) {
+          <div
+            class="scroll-arrow scroll-arrow-left"
+            (click)="scrollMenu(-100)"
+          >
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </div>
+          }
+
+          <div class="menu-links-container" #menuLinksContainer>
+            <!-- PARTE DESKTOP LINKS MENU SIDE BAR CADASTR ETC -->
+            @for (link of links; track link.label) { @if (!link.children ||
+            link.children.length === 0) {
+            <a
+              (click)="navigate(link.path!)"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: link.exact ?? false }"
+              class="nav-link"
+            >
+              {{ link.label }}
+            </a>
+            } @if (link.children && link.children.length > 0) {
+            <a
+              (click)="openLinkPopover($event, link.children)"
+              [ngClass]="{ 'active-link': isParentActive(link) }"
+              class="nav-link menu-trigger"
+              tabindex="0"
+            >
+              {{ link.label }}
+            </a>
+            } }
+          </div>
+
+          @if (showScrollRight) {
+          <div
+            class="scroll-arrow scroll-arrow-right"
+            (click)="scrollMenu(100)"
+          >
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </div>
+          }
+        </div>
+      </div>
+
+      <ion-buttons slot="end" class="actions nav-content-right">
+        <div class="avatar notification-avatar">
+          <ion-icon name="notifications"></ion-icon>
+
+          @if(notificationCount > 0){
+          <ion-badge color="danger" class="notification-badge">
+            {{ notificationCount }}
+          </ion-badge>
+          }
+        </div>
+
+        <div class="avatar" (click)="openMenu($event)">
+          @if (userImageUrl && userImageUrl.length > 0) {
+          <img
+            [src]="userImageUrl"
+            alt="Avatar do Usuário"
+            class="avatar-image"
+          />
+          } @else {
+          <ion-icon name="person"></ion-icon>
+          }
+        </div>
+      </ion-buttons>
+    </nav>
+    }
+  </ion-toolbar>
+</ion-header>
+
+<!-- Popover avatar -->
+<app-popover-menu
+  [isOpen]="isMenuOpen"
+  [event]="menuEvent"
+  [items]="avatarMenuItems"
+  (closed)="closeMenu()"
+>
+</app-popover-menu>
+
+<!-- Popover links desktop -->
+<app-popover-menu
+  [isOpen]="isLinkPopoverOpen"
+  [event]="linkPopoverEvent"
+  [items]="linkPopoverItems"
+  (closed)="closeLinkPopover()"
+  (selected)="onChildClick($event)"
+></app-popover-menu>
+
+<div id="main-content" class="content">
+  <main class="main">
+    <ng-content></ng-content>
+  </main>
+</div>

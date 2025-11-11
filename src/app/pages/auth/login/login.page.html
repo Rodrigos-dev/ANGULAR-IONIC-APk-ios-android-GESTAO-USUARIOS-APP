@@ -1,0 +1,54 @@
+<ion-content>
+  <div class="login-container">
+    <div class="ion-text-center">
+      <img src="assets/images/logo.png" alt="Logo" class="logo" />
+    </div>
+
+    <form [formGroup]="inputForm">
+      <div class="div-form">
+        <custom-input
+          [labelPlacement]="'stacked'"
+          [borderColor]="'var(--cor-verde-medio)'"
+          [background]="'transparent'"
+          [color]="'var(--cor-verde-medio)'"
+          [type]="'email'"
+          formControlName="email"
+          [placeholder]="'Email'"
+        ></custom-input>
+      </div>
+
+      <div class="div-form">
+        <custom-input
+          (keyup.enter)="login()"
+          [borderColor]="'var(--cor-verde-medio)'"
+          [background]="'transparent'"
+          [color]="'var(--cor-verde-medio)'"
+          [type]="'password'"
+          formControlName="senha"
+          [placeholder]="'Senha'"
+        ></custom-input>
+      </div>
+    </form>
+
+    <custom-button
+      [loading]="loading"
+      [fontSize]="'13px'"
+      [expand]="'block'"
+      [shape]="'round'"
+      [disabled]="inputForm.invalid"
+      (buttonClick)="login()"
+      [fill]="'solid'"
+      [title]="'Entrar'"
+      [backgroundColor]="'var(--cor-verde-medio)'"
+      [fontColor]="'var(--cor-branco)'"
+    ></custom-button>
+
+    <div class="createAccountContainer">
+      <p (click)="registerUser()">Criar Nova Conta</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    <ion-label>Copyright © Friends Dev 2025</ion-label>
+  </div>
+</ion-content>

@@ -1,0 +1,20 @@
+<swiper-container [pagination]="{ type: 'bullets', clickable: true }" [ngStyle]="{ height: height }">
+  @for (image of images; track index; let index = $index) {
+  <swiper-slide (click)="openZoom(image)">
+    <div style="position: relative; width: 100%; height: 100%">
+      <ion-img [src]="
+              !errorLoadImage
+                ? image
+                : 'https://ionicframework.com/docs/img/demos/thumbnail.svg'
+            " [alt]="alt" (ionError)="errorImage()" style="width: 100%; height: 100%; object-fit: cover">
+      </ion-img>
+
+      @if (iconName !== '') {
+      <div class="div-icone" (click)="!disabledIconDelete ? iconClick($event, image, index) : null">
+        <ion-icon [name]="iconName" [ngStyle]="{ color: iconColor, 'font-size': iconHeight }"></ion-icon>
+      </div>
+      }
+    </div>
+  </swiper-slide>
+  }
+</swiper-container>

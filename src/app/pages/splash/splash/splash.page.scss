@@ -1,0 +1,45 @@
+ion-content {
+  // Ocupa a tela inteira.
+  // IMPORTANTE: Definimos a posição para que 'position: absolute' funcione corretamente dentro dele.
+  position: relative;
+
+  // Estilos para a Imagem (Logo)
+  img {
+    display: block; // Garante que a imagem se comporte como um bloco
+    max-height: 100%; // Ocupa no máximo 100% da altura do pai (ion-content)
+    max-width: 100%; // Ocupa no máximo 100% da largura do pai
+    object-fit: contain; // Ajusta a imagem dentro das dimensões sem cortar
+
+    // Centraliza o logo horizontal e verticalmente na tela
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  // Estilos para o Spinner
+  ion-spinner {
+    position: absolute;
+    bottom: 50px;
+    left: 50%; // Coloca o centro do spinner no meio da tela
+    transform: translateX(
+      -50%
+    ); // Move o spinner 50% para a esquerda (centralizando-o)
+    width: 40px; // Largura definida
+    height: 40px; // Altura definida
+    color: var(--cor-verde-medio);
+  }
+
+  // Estilos para o Label (Aguarde...)
+  ion-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%; // Coloca o centro do label no meio da tela
+    transform: translateX(
+      -50%
+    ); // Move o label 50% para a esquerda (centralizando-o)
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--cor-verde-medio);
+  }
+}

@@ -1,0 +1,25 @@
+.custom-popover {
+  --width: 180px;
+
+  .menu-list {
+    padding: 0;
+
+    .menu-item {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      --inner-padding-start: 0px;
+      --inner-padding-end: 14px;
+      font-size: 13px;
+      height: 50px;
+
+      .menu-label {
+        font-size: 14px;
+      }
+
+      .menu-icon {
+        font-size: 16px;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<div class="div-form custom-select-style">
+  <ion-select
+    [(ngModel)]="value"
+    [name]="name"
+    class="custom-select-fill"
+    [placeholder]="placeholder"
+    interface="popover"
+    [multiple]="multiple"
+    (ionChange)="onValueChange($event.target.value)"
+  >
+    @for (option of options; track $index) {
+    <ion-select-option [value]="option.value">
+      {{ option.label }}
+    </ion-select-option>
+    }
+  </ion-select>
+</div>

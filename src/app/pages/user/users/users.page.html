@@ -1,0 +1,41 @@
+<ion-content class="ion-padding">
+  <div class="card-container">
+    @for(user of users$ | async; track user.id){
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ user.name }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        @if(user.document){
+        <p><strong>Documento:</strong> {{ user.document }}</p>
+        }@if(user.email){
+        <p><strong>E-mail:</strong> {{ user.email }}</p>
+        } @if(user.roleUser){
+        <p><strong>Função:</strong> {{ user.roleUser }}</p>
+        }
+
+        <div class="actions">
+          <ion-button
+            fill="clear"
+            style="--color: var(--cor-verde-medio)"
+            (click)="editUser(user.id)"
+          >
+            <ion-icon name="create-outline"></ion-icon> Editar
+          </ion-button>
+          <ion-button fill="clear" color="danger" (click)="deleteUser(user.id)">
+            <ion-icon name="trash-outline"></ion-icon> Excluir
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    }
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregando mais usuários..."
+    ></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

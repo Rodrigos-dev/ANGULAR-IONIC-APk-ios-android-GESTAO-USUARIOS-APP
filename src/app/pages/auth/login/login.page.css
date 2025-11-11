@@ -1,0 +1,41 @@
+ion-content {
+  --background: var(--cor-cinza-claro);
+}
+ion-content .div-form {
+  margin-bottom: 18px;
+}
+ion-content .login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: -moz-max-content;
+  width: max-content;
+}
+ion-content .login-container .createAccountContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ion-content .login-container .createAccountContainer p {
+  color: var(--cor-verde-medio);
+  font-size: 12px;
+  cursor: pointer;
+}
+ion-content .logo {
+  width: 190px;
+  margin-bottom: 40px;
+}
+ion-content .login-button {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+ion-content .footer {
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  width: 100%;
+  font-size: 12px;
+  color: gray;
+}/*# sourceMappingURL=login.page.css.map */

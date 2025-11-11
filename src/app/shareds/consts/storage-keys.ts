@@ -1,0 +1,9 @@
+export const StorageKeys = {
+  // SECURE STORAGE
+  USER: 'USER',
+
+  // IONIC STORAGE
+  //   CONFIGURATION: 'CONFIGURATION',
+  //   OCCURRENCE_REASONS: 'OCCURRENCE_REASONS',
+  //   ROUTE: 'ROUTE',
+};

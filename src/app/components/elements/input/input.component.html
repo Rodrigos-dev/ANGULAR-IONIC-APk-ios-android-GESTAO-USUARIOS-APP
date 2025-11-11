@@ -1,0 +1,67 @@
+<ion-input
+  [counter]="maxlength != null && showConter"
+  [maxlength]="maxlength"
+  [ngStyle]="{
+    '--background': background,
+    border: '1px solid ' + borderColor,
+    '--color': color,
+    '--border-radius': '32px 0',
+    '--border-style': 'none'
+  }"
+  [clearInput]="clearInput"
+  [autocapitalize]="autocapitalize ? 'sentences' : 'none'"
+  [type]="type"
+  [disabled]="disabled"
+  [value]="value"
+  (ionInput)="onInputChange($event.target.value)"
+  [label]="description"
+  [labelPlacement]="
+    labelPlacement !== ''
+      ? labelPlacement
+      : startButtonIcon || endButtonIcon || type === 'password'
+      ? 'stacked'
+      : 'floating'
+  "
+  [fill]="fill"
+  [placeholder]="placeholder"
+  [name]="name"
+>
+  @if (startButtonIcon) {
+  <ion-icon slot="start" [name]="startButtonIcon" aria-hidden="true"></ion-icon>
+  } @if (endButtonIcon) {
+  <ion-button fill="clear" slot="end" aria-label="Show/hide">
+    <ion-icon
+      slot="icon-only"
+      [name]="endButtonIcon"
+      aria-hidden="true"
+    ></ion-icon>
+  </ion-button>
+  } @if (isSensitive) {
+  <ion-button
+    fill="clear"
+    slot="end"
+    (click)="toggleVisibility()"
+    type="button"
+    aria-label="Mostrar/Esconder Dado"
+  >
+    <ion-icon
+      slot="icon-only"
+      [name]="shouldHideValue ? 'eye-off-outline' : 'eye-outline'"
+      aria-hidden="true"
+    ></ion-icon>
+  </ion-button>
+  } @else if (type === 'password') {
+  <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+  }
+</ion-input>
+
+@if (noteText) {
+<ion-note
+  [ngStyle]="{
+    color: noteColor,
+    'font-size': '12px',
+    'font-style': 'italic'
+  }"
+  >{{ noteText }}</ion-note
+>
+}

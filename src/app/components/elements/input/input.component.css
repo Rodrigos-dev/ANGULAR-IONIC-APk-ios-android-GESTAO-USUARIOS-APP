@@ -1,0 +1,17 @@
+ion-input {
+  border: 1px solid;
+  border-radius: 20px;
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+:host ::ng-deep ion-input input.native-input {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  border-radius: 20px;
+  height: 100%;
+}
+
+:host {
+  --ion-color-primary: var(--cor-verde-medio-transp);
+}/*# sourceMappingURL=input.component.css.map */

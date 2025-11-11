@@ -1,0 +1,9 @@
+ion-header ion-toolbar {
+  --background: var(--cor-cinza-claro);
+}
+ion-header ion-toolbar ion-title {
+  padding-left: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.5rem;
+}/*# sourceMappingURL=header.component.css.map */

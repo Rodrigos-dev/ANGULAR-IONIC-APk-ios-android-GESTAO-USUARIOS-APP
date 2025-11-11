@@ -1,0 +1,29 @@
+<ion-button
+  (click)="click()"
+  [ngStyle]="{
+    '--border-color': borderColor,
+    'font-size': fontSize,
+    width: width,
+    '--background': backgroundColor,
+    '--color': fontColor
+  }"
+  [strong]="strong"
+  [mode]="mode"
+  [disabled]="disabled || loading"
+  [size]="size"
+  [expand]="expand"
+  [fill]="fill"
+  [shape]="shape"
+>
+  @if (iconOnlyName) {
+  <ion-icon slot="icon-only" [name]="iconOnlyName"></ion-icon>
+  } @if (startIconName) {
+  <ion-icon slot="start" [name]="startIconName"></ion-icon>
+  } @if (endIconName) {
+  <ion-icon slot="start" [name]="endIconName"></ion-icon>
+  } @if (!loading) {
+  {{ title }}
+  } @else {
+  <ion-spinner name="crescent"></ion-spinner>
+  }
+</ion-button>

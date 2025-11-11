@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="emitBack()">
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      {{ title }}
+    </ion-title>
+
+    @if(showActionButton){
+    <ion-buttons slot="end">
+      <ion-button [disabled]="disableIcon" (click)="emitIcon()">
+        <ion-icon
+          [ngStyle]="{ color: iconColor }"
+          slot="icon-only"
+          [name]="iconName"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    }
+  </ion-toolbar>
+
+  <ng-content></ng-content>
+</ion-header>

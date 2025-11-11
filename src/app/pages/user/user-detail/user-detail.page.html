@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <custom-button
+        iconOnlyName="arrow-back-outline"
+        fill="clear"
+        (buttonClick)="closeModal()"
+        fontColor="var(--cor-verde-medio)"
+      ></custom-button>
+    </ion-buttons>
+    <ion-title>Dados do Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (user$ | async; as user) { @if (userForm) {
+  <form [formGroup]="userForm">
+    <!-- Nome -->
+    <div class="div-form">
+      <custom-input
+        name="name"
+        label="Nome"
+        labelPlacement="stacked"
+        borderColor="var(--cor-verde-medio)"
+        background="transparent"
+        color="var(--cor-verde-medio)"
+        formControlName="name"
+        placeholder="Nome"
+        [noteText]="getFieldError('name')"
+      ></custom-input>
+    </div>
+
+    <div class="div-form">
+      <custom-input
+        name="email"
+        label="Email"
+        labelPlacement="stacked"
+        borderColor="var(--cor-verde-medio)"
+        background="transparent"
+        color="var(--cor-verde-medio)"
+        type="email"
+        formControlName="email"
+        placeholder="Email"
+        [noteText]="getFieldError('email')"
+        [noteColor]="'red'"
+      ></custom-input>
+    </div>
+
+    <app-input-select
+      [options]="roleOptions"
+      [placeholder]="'Função'"
+      [name]="'roleUser'"
+      [multiple]="false"
+      formControlName="roleUser"
+      (valueChange)="handleRoleChange($event)"
+    ></app-input-select>
+
+    <div class="div-form">
+      <custom-input
+        name="document"
+        label="Documento"
+        labelPlacement="stacked"
+        borderColor="var(--cor-verde-medio)"
+        background="transparent"
+        color="var(--cor-verde-medio)"
+        [ngModel]="user.document"
+        placeholder="Documento"
+        disabled="true"
+        [isSensitive]="true"
+        [maskType]="'cpfCnpj'"
+        [ngModelOptions]="{ standalone: true }"
+      ></custom-input>
+    </div>
+  </form>
+  } } @else {
+  <ion-spinner></ion-spinner>
+  }
+</ion-content>
+
+<ion-footer>
+  <custom-button
+    [fontSize]="'16px'"
+    [expand]="'block'"
+    [shape]="'round'"
+    (buttonClick)="saveChanges()"
+    [fill]="'solid'"
+    [title]="'Salvar Alterações'"
+    [backgroundColor]="'var(--cor-verde-medio)'"
+    [fontColor]="'var(--cor-branco)'"
+    [disabled]="!canSaveVar"
+  ></custom-button>
+</ion-footer>

@@ -1,0 +1,37 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+@import "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap";
+
+:root {
+  --cor-verde-escuro: #002e34;
+  --cor-verde-medio: #004443;
+  --cor-verde-medio-transp: rgba(0, 68, 67, 0.4);
+  --cor-verde-forte: #00755c;
+  --cor-verde-claro: #00c16c;
+  --cor-verde-limao: #90ff17;
+  --cor-cinza-claro: #f7f7f7;
+  --cor-cinza-medio: #d9d4d4;
+  --cor-branco: #fff;
+  --cor-preto: #000;
+  --cor-vermelho: #ff6666;
+  --cor-amarelo: #ffd700;
+  --cor-cor: black;
+}
+
+.mobile-device {
+  :root {
+    --ion-safe-area-top: max(env(safe-area-inset-top, 24px), 24px);
+    --ion-safe-area-bottom: max(env(safe-area-inset-bottom, 40px), 40px);
+    --ion-safe-area-left: max(env(safe-area-inset-left, 0px), 0px);
+    --ion-safe-area-right: max(env(safe-area-inset-right, 0px), 0px);
+  }
+}
+
+.desktop-device {
+  --ion-safe-area-top: 0px;
+  --ion-safe-area-bottom: 0px;
+  --ion-safe-area-left: 0px;
+  --ion-safe-area-right: 0px;
+}

@@ -1,0 +1,21 @@
+<ion-textarea
+  autoGrow="true"
+  [counter]="maxlength != null"
+  [maxlength]="maxlength"
+  [ngStyle]="{
+    '--background': background,
+    border: '1px solid' + borderColor,
+    '--color': color,
+    '--border-radius': '32px 0',
+    '--border-style': 'none'
+  }"
+  [autocapitalize]="autocapitalize ? 'sentences' : 'none'"
+  [disabled]="disabled"
+  [value]="value"
+  (ionInput)="onInputChange($event.target.value)"
+  [label]="description"
+  [labelPlacement]="labelPlacement"
+  [fill]="fill"
+  [placeholder]="placeholder"
+>
+</ion-textarea>

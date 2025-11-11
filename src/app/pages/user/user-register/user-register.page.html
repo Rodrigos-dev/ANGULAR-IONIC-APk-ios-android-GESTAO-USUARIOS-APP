@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <custom-button
+        iconOnlyName="arrow-back-outline"
+        fill="clear"
+        (buttonClick)="closeModal()"
+        fontColor="var(--cor-verde-medio)"
+      ></custom-button>
+    </ion-buttons>
+    <ion-title>Cadastro de Usuário</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="userRegisterForm">
+    <!-- Nome -->
+    <div class="div-form">
+      <custom-input
+        name="name"
+        label="Nome"
+        labelPlacement="stacked"
+        borderColor="var(--cor-verde-medio)"
+        background="transparent"
+        color="var(--cor-verde-medio)"
+        formControlName="name"
+        placeholder="Nome"
+        [noteColor]="'red'"
+        [noteText]="getErrorMessage('name')"
+      ></custom-input>
+    </div>
+
+    <div class="div-form">
+      <custom-input
+        name="email"
+        label="Email"
+        labelPlacement="stacked"
+        borderColor="var(--cor-verde-medio)"
+        background="transparent"
+        color="var(--cor-verde-medio)"
+        type="email"
+        formControlName="email"
+        placeholder="Email"
+        [noteColor]="'red'"
+        [noteText]="getErrorMessage('email')"
+      ></custom-input>
+    </div>
+
+    @if(userLogedRole === 'admin'){
+    <app-input-select
+      [options]="roleOptions"
+      [placeholder]="'Função'"
+      [name]="'roleUser'"
+      [multiple]="false"
+      formControlName="roleUser"
+      (valueChange)="handleRoleChange($event)"
+    ></app-input-select>
+    }
+
+    <div class="div-form">
+      <custom-input
+        name="document"
+        label="Documento"
+        labelPlacement="stacked"
+        borderColor="var(--cor-verde-medio)"
+        background="transparent"
+        color="var(--cor-verde-medio)"
+        placeholder="Documento"
+        [maskType]="'cpfCnpj'"
+        formControlName="document"
+        [noteColor]="'red'"
+        [noteText]="getErrorMessage('document')"
+      ></custom-input>
+    </div>
+
+    <div class="div-form">
+      <custom-input
+        [borderColor]="'var(--cor-verde-medio)'"
+        [background]="'transparent'"
+        [color]="'var(--cor-verde-medio)'"
+        [type]="'password'"
+        formControlName="password"
+        [placeholder]="'Senha'"
+        [noteColor]="'red'"
+        [noteText]="getErrorMessage('password')"
+      ></custom-input>
+    </div>
+
+    <div class="div-form">
+      <custom-input
+        [borderColor]="'var(--cor-verde-medio)'"
+        [background]="'transparent'"
+        [color]="'var(--cor-verde-medio)'"
+        [type]="'password'"
+        formControlName="confirmPassword"
+        [placeholder]="'Confirme a Senha'"
+        [noteColor]="'red'"
+        [noteText]="getErrorMessage('confirmPassword')"
+        (ionInput)="userRegisterForm.updateValueAndValidity()"
+      ></custom-input>
+    </div>
+  </form>
+</ion-content>
+
+<ion-footer>
+  <custom-button
+    [fontSize]="'16px'"
+    [expand]="'block'"
+    [shape]="'round'"
+    (buttonClick)="register()"
+    [fill]="'solid'"
+    [title]="((loading$ | async) ?? false) ? 'Criando usuário...' : 'Criar Usuário'"
+    [backgroundColor]="'var(--cor-verde-medio)'"
+    [fontColor]="'var(--cor-branco)'"
+    [disabled]="!canSave || ((loading$ | async) ?? false)"
+  >
+    ></custom-button
+  >
+</ion-footer>

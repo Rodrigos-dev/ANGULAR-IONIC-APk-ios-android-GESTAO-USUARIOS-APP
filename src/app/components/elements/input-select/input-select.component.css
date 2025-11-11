@@ -1,0 +1,40 @@
+.div-form {
+  margin-bottom: 18px;
+}
+
+.custom-toolbar ion-title {
+  color: var(--cor-verde-medio);
+}
+
+ion-toolbar ion-title {
+  color: var(--cor-verde-medio);
+}
+
+.div-form.custom-select-style {
+  display: flex;
+  justify-content: center; /* centraliza na horizontal */
+  align-items: center; /* centraliza na vertical (se tiver altura) */
+  border: 1px solid var(--cor-verde-medio);
+  border-radius: 20px;
+  padding: 5px;
+}
+.div-form.custom-select-style ion-select {
+  width: auto;
+  border: none;
+}
+.div-form.custom-select-style ion-select::part(text) {
+  color: var(--cor-verde-medio);
+  text-align: center;
+}
+.div-form.custom-select-style ion-select::part(icon) {
+  color: var(--cor-verde-medio);
+  opacity: 1;
+}
+
+ion-footer {
+  --border-width: 0;
+  --padding-bottom: 0;
+  --padding-top: 0;
+  padding: 8px 16px 8px 16px;
+  background: var(--ion-background-color, #fff);
+}/*# sourceMappingURL=input-select.component.css.map */

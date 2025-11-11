@@ -1,0 +1,25 @@
+<ion-popover
+  [isOpen]="isOpen"
+  [event]="event"
+  (didDismiss)="closeMenu()"
+  class="custom-popover"
+>
+  <ng-template>
+    <ion-list class="menu-list custom-menu-list">
+      @for (item of items; track item.label) {
+      <ion-item
+        button
+        class="menu-item"
+        [ngStyle]="item.style"
+        [class.logout-item]="item.label === 'Sair'"
+        (click)="onSelect(item)"
+      >
+        <ion-label class="menu-label">{{ item.label }}</ion-label>
+        @if (item.icon) {
+        <ion-icon [name]="item.icon" slot="end" class="menu-icon"></ion-icon>
+        }
+      </ion-item>
+      }
+    </ion-list>
+  </ng-template>
+</ion-popover>
