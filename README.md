@@ -33,6 +33,7 @@ Compatível com Android e iOS, incluindo splash manual adicional.
 Aplicação prática de testes com Jest e debugging direto.
 
 ## 🖼️ Capturas de Tela
+<img width="1913" height="906" alt="alert excluir usuario desktop" src="https://github.com/user-attachments/assets/c3938c86-9457-472d-b63e-7e0b9142c5e5" />
 
 <p align="center" width="100%">
   <table align="center" width="100%">
